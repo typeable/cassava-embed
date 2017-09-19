@@ -1,0 +1,53 @@
+name:                         cassava-embed
+version:                      0.1.0.0
+synopsis:                     CSV-file embedding library
+description: >
+  @cassava-embed@ helps to embed CSV-file using TemplateHaskell.
+homepage:                     https://github.com/typeable/cassava-embed#readme
+license:                      BSD3
+author:                       Typeable.io contributors
+maintainer:                   makeit@typeable.io
+category:                     Text,CSV
+extra-source-files:
+  - README.md
+
+flags:
+  build-examples:
+    description:              Build example(s)
+    default:                  false
+    manual:                   true
+
+dependencies:
+  - base >= 4.7 && < 5
+  - cassava
+  - template-haskell
+
+executables:
+  example:
+    source-dirs:
+      - example
+    main:                     Main.hs
+    other-modules:
+      - Types
+    when:
+      - condition: flag(build-examples)
+        then:
+          when:
+            - condition: impl(ghc < 8.0.1)
+              then:
+                dependencies:
+                  - cassava-embed
+                  - th-lift
+              else:
+                dependencies:
+                  - cassava-embed
+          buildable: true
+        else:
+          buildable: false
+
+library:
+  source-dirs:
+    - src
+  dependencies:
+    - bytestring
+    - vector

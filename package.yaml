@@ -8,8 +8,12 @@ license:                      BSD3
 author:                       Typeable.io contributors
 maintainer:                   makeit@typeable.io
 category:                     Text,CSV
+tested-with:                  GHC ==8.0.2, GHC ==7.10.3
 extra-source-files:
   - README.md
+  - CHANGES.md
+data-files:
+  - example/data.csv
 
 flags:
   build-examples:

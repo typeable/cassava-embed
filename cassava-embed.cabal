@@ -12,11 +12,16 @@ author:         Typeable.io contributors
 maintainer:     makeit@typeable.io
 license:        BSD3
 license-file:   LICENSE
+tested-with:    GHC ==8.0.2, GHC ==7.10.3
 build-type:     Simple
 cabal-version:  >= 1.10
 
 extra-source-files:
+    CHANGES.md
     README.md
+
+data-files:
+    example/data.csv
 
 flag build-examples
   description: Build example(s)
